@@ -1,8 +1,3 @@
-/**
- * Format a number to a compact notation (e.g., 1.2k, 3.4M)
- * @param {number} num - The number to format
- * @returns {string} - Formatted number string
- */
 export const formatNumber = (num) => {
   if (num === undefined || num === null) {
     return '0'

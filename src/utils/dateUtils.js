@@ -1,8 +1,3 @@
-/**
- * Format a Unix timestamp to a human-readable "time ago" format
- * @param {number} timestamp - Unix timestamp in seconds
- * @returns {string} - Formatted time string (e.g., "2 hours ago")
- */
 export const formatDistanceToNow = (timestamp) => {
   const now = Date.now()
   const date = new Date(timestamp * 1000)

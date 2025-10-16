@@ -1,40 +1,36 @@
 import axios from 'axios'
 
-const BASE_URL = 'https://www.reddit.com'
+const BASE_URL = import.meta.env.DEV ? '/api/reddit' : 'https://www.reddit.com'
 
-// Create axios instance with default config
 const redditApi = axios.create({
   baseURL: BASE_URL,
   headers: {
-    'Content-Type': 'application/json',
+    'Accept': 'application/json',
   },
+  withCredentials: false,
 })
-
-/**
- * Fetch posts from a subreddit
- * @param {string} subreddit - The subreddit name (default: 'popular')
- * @param {string} sort - Sort type: hot, new, top, rising
- * @param {string} time - Time filter for top: hour, day, week, month, year, all
- * @param {number} limit - Number of posts to fetch
- */
 export const fetchPosts = async (subreddit = 'popular', sort = 'hot', time = 'day', limit = 25) => {
   try {
     const endpoint = `/r/${subreddit}/${sort}.json`
-    const params = { limit, t: time }
+    const params = { limit, t: time, raw_json: 1 }
     const response = await redditApi.get(endpoint, { params })
+    
+    if (!response.data?.data?.children) {
+      throw new Error('Invalid response format')
+    }
+    
     return response.data.data.children.map(child => child.data)
   } catch (error) {
+    console.error('Reddit API Error:', error)
+    if (error.response) {
+      throw new Error(`Reddit API error: ${error.response.status}`)
+    } else if (error.request) {
+      throw new Error('Cannot connect to Reddit')
+    }
     throw new Error(`Failed to fetch posts: ${error.message}`)
   }
 }
 
-/**
- * Search Reddit posts
- * @param {string} query - Search query
- * @param {string} subreddit - Limit search to subreddit (optional)
- * @param {string} sort - Sort: relevance, hot, top, new, comments
- * @param {string} time - Time filter: hour, day, week, month, year, all
- */
 export const searchPosts = async (query, subreddit = null, sort = 'relevance', time = 'all') => {
   try {
     const endpoint = subreddit ? `/r/${subreddit}/search.json` : '/search.json'
@@ -52,14 +48,9 @@ export const searchPosts = async (query, subreddit = null, sort = 'relevance', t
   }
 }
 
-/**
- * Fetch comments for a specific post
- * @param {string} permalink - The post's permalink
- */
 export const fetchComments = async (permalink) => {
   try {
     const response = await redditApi.get(`${permalink}.json`)
-    // Response contains [post, comments]
     const commentsData = response.data[1].data.children
     return commentsData.map(child => child.data)
   } catch (error) {
@@ -67,9 +58,6 @@ export const fetchComments = async (permalink) => {
   }
 }
 
-/**
- * Fetch popular subreddits
- */
 export const fetchPopularSubreddits = async () => {
   try {
     const response = await redditApi.get('/subreddits/popular.json', { params: { limit: 25 } })
@@ -79,10 +67,6 @@ export const fetchPopularSubreddits = async () => {
   }
 }
 
-/**
- * Search subreddits
- * @param {string} query - Search query
- */
 export const searchSubreddits = async (query) => {
   try {
     const response = await redditApi.get('/subreddits/search.json', { 
