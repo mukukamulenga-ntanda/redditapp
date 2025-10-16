@@ -1,0 +1,123 @@
+.search-bar {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+  flex: 1;
+  max-width: 600px;
+}
+
+.search-input-wrapper {
+  position: relative;
+  flex: 1;
+  display: flex;
+  align-items: center;
+}
+
+.search-icon {
+  position: absolute;
+  left: var(--spacing-md);
+  width: 20px;
+  height: 20px;
+  color: var(--reddit-gray);
+  pointer-events: none;
+}
+
+.search-input {
+  width: 100%;
+  padding: var(--spacing-sm) var(--spacing-md);
+  padding-left: 42px;
+  border: 1px solid var(--reddit-light-gray);
+  border-radius: 20px;
+  font-size: var(--font-size-md);
+  background: var(--reddit-bg);
+  transition: all var(--transition-fast);
+}
+
+.search-input:hover {
+  border-color: var(--reddit-gray);
+}
+
+.search-input:focus {
+  outline: none;
+  border-color: var(--reddit-blue);
+  background: var(--reddit-card);
+}
+
+.clear-button {
+  position: absolute;
+  right: var(--spacing-sm);
+  width: 24px;
+  height: 24px;
+  padding: 0;
+  border: none;
+  background: none;
+  color: var(--reddit-gray);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  transition: all var(--transition-fast);
+}
+
+.clear-button:hover {
+  color: var(--reddit-dark);
+  background: var(--reddit-light-gray);
+}
+
+.search-button {
+  padding: var(--spacing-sm) var(--spacing-lg);
+  background: var(--reddit-orange);
+  color: white;
+  border: none;
+  border-radius: 20px;
+  font-size: var(--font-size-md);
+  font-weight: 600;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  white-space: nowrap;
+}
+
+.search-button:hover {
+  background: #FF5722;
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+
+.search-button:active {
+  transform: translateY(0);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .search-bar {
+    max-width: 100%;
+  }
+  
+  .search-button {
+    padding: var(--spacing-sm) var(--spacing-md);
+    font-size: var(--font-size-sm);
+  }
+}
+
+@media (max-width: 480px) {
+  .search-button {
+    padding: var(--spacing-sm);
+  }
+  
+  .search-button {
+    font-size: 0;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .search-button::before {
+    content: '🔍';
+    font-size: var(--font-size-lg);
+  }
+}
+

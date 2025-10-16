@@ -1,0 +1,25 @@
+{
+  "short_name": "Reddit Client",
+  "name": "Reddit Client - Browse Posts & Comments",
+  "description": "A beautiful and fast Reddit client built with React and Redux",
+  "icons": [
+    {
+      "src": "/reddit-icon-192.png",
+      "type": "image/png",
+      "sizes": "192x192",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/reddit-icon-512.png",
+      "type": "image/png",
+      "sizes": "512x512",
+      "purpose": "any maskable"
+    }
+  ],
+  "start_url": "/",
+  "display": "standalone",
+  "theme_color": "#FF4500",
+  "background_color": "#F8F9FA",
+  "orientation": "portrait-primary"
+}
+

@@ -1,0 +1,29 @@
+.post-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+}
+
+.no-posts {
+  background: var(--reddit-card);
+  border-radius: var(--border-radius-lg);
+  padding: var(--spacing-xl) var(--spacing-lg);
+  text-align: center;
+  box-shadow: var(--shadow-sm);
+  animation: fadeIn var(--transition-normal);
+}
+
+.no-posts-icon {
+  font-size: 4rem;
+  margin-bottom: var(--spacing-md);
+}
+
+.no-posts h2 {
+  color: var(--reddit-dark);
+  margin-bottom: var(--spacing-sm);
+}
+
+.no-posts p {
+  color: var(--reddit-gray);
+}
+

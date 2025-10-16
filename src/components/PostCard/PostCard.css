@@ -1,0 +1,230 @@
+.post-card {
+  background: var(--reddit-card);
+  border-radius: var(--border-radius-lg);
+  box-shadow: var(--shadow-sm);
+  display: flex;
+  gap: var(--spacing-md);
+  padding: var(--spacing-md);
+  transition: all var(--transition-fast);
+  animation: slideUp var(--transition-normal);
+  animation-fill-mode: both;
+}
+
+.post-card:hover {
+  box-shadow: var(--shadow-md);
+  transform: translateY(-2px);
+}
+
+.post-votes {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--spacing-xs);
+  padding: var(--spacing-sm);
+  background: var(--reddit-bg);
+  border-radius: var(--border-radius);
+  height: fit-content;
+}
+
+.vote-button {
+  background: none;
+  border: none;
+  padding: var(--spacing-xs);
+  cursor: pointer;
+  color: var(--reddit-gray);
+  transition: all var(--transition-fast);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--border-radius);
+}
+
+.vote-button svg {
+  width: 20px;
+  height: 20px;
+}
+
+.vote-button:hover {
+  background: var(--reddit-light-gray);
+}
+
+.vote-button:first-child:hover {
+  color: var(--reddit-orange);
+}
+
+.vote-button:last-child:hover {
+  color: var(--reddit-blue);
+}
+
+.vote-count {
+  font-size: var(--font-size-sm);
+  font-weight: 700;
+  color: var(--reddit-dark);
+}
+
+.post-content {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-sm);
+}
+
+.post-header {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-xs);
+  flex-wrap: wrap;
+  font-size: var(--font-size-sm);
+}
+
+.subreddit-link {
+  font-weight: 700;
+  color: var(--reddit-dark);
+  text-decoration: none;
+  transition: color var(--transition-fast);
+}
+
+.subreddit-link:hover {
+  color: var(--reddit-orange);
+  text-decoration: underline;
+}
+
+.post-meta {
+  color: var(--reddit-gray);
+}
+
+.post-title-link {
+  text-decoration: none;
+  color: inherit;
+}
+
+.post-title {
+  font-size: var(--font-size-lg);
+  font-weight: 600;
+  color: var(--reddit-dark);
+  line-height: 1.4;
+  transition: color var(--transition-fast);
+}
+
+.post-title-link:hover .post-title {
+  color: var(--reddit-blue);
+}
+
+.post-text {
+  color: var(--reddit-gray);
+  line-height: 1.6;
+  font-size: var(--font-size-md);
+}
+
+.post-media {
+  margin-top: var(--spacing-sm);
+  border-radius: var(--border-radius);
+  overflow: hidden;
+  max-height: 500px;
+}
+
+.post-image {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: cover;
+  transition: transform var(--transition-slow);
+}
+
+.post-card:hover .post-image {
+  transform: scale(1.02);
+}
+
+.video-placeholder {
+  background: var(--reddit-bg);
+  padding: var(--spacing-xl);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--spacing-sm);
+  color: var(--reddit-gray);
+}
+
+.video-placeholder svg {
+  width: 48px;
+  height: 48px;
+  color: var(--reddit-orange);
+}
+
+.post-footer {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-md);
+  margin-top: var(--spacing-sm);
+  flex-wrap: wrap;
+}
+
+.post-action {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-xs);
+  padding: var(--spacing-xs) var(--spacing-sm);
+  background: none;
+  border: none;
+  border-radius: var(--border-radius);
+  font-size: var(--font-size-sm);
+  font-weight: 600;
+  color: var(--reddit-gray);
+  cursor: pointer;
+  text-decoration: none;
+  transition: all var(--transition-fast);
+}
+
+.post-action:hover {
+  background: var(--reddit-bg);
+  color: var(--reddit-dark);
+}
+
+.post-action svg {
+  width: 18px;
+  height: 18px;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .post-card {
+    padding: var(--spacing-sm);
+    gap: var(--spacing-sm);
+  }
+  
+  .post-votes {
+    padding: var(--spacing-xs);
+  }
+  
+  .post-title {
+    font-size: var(--font-size-md);
+  }
+  
+  .post-media {
+    max-height: 300px;
+  }
+}
+
+@media (max-width: 480px) {
+  .post-votes {
+    flex-direction: row;
+    width: 100%;
+    justify-content: center;
+  }
+  
+  .post-card {
+    flex-direction: column;
+  }
+  
+  .post-footer {
+    gap: var(--spacing-xs);
+  }
+  
+  .post-action {
+    font-size: var(--font-size-xs);
+    padding: var(--spacing-xs);
+  }
+}
+
