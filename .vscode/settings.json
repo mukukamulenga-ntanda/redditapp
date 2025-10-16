@@ -4,6 +4,15 @@
   "terminal.integrated.commandsToSkipShell": [
     "workbench.action.terminal.copySelection",
     "workbench.action.terminal.paste"
-  ]
+  ],
+  "terminal.integrated.enablePersistentSessions": true,
+  "terminal.integrated.enableMultiLinePasteWarning": false,
+  "terminal.integrated.defaultProfile.windows": "PowerShell",
+  "terminal.integrated.profiles.windows": {
+    "PowerShell": {
+      "source": "PowerShell",
+      "args": ["-NoLogo"]
+    }
+  }
 }
 
